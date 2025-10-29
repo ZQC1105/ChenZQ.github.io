@@ -1,5 +1,5 @@
 {
-  "source_base_path": "E:/Git/DocFX",
+  "source_base_path": "E:/Git/DocFX/zqc1105.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,6 +9,26 @@
           "relative_path": "index.json"
         }
       }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Test1.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Test1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Test2.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Test2.html"
+        }
+      },
+      "version": ""
     },
     {
       "type": "Conceptual",
