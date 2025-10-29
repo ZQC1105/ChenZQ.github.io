@@ -1,5 +1,5 @@
 {
-  "source_base_path": "E:/Git/DocFX/zqc1105.github.io",
+  "source_base_path": "D:/快捷键/重要项目/Git/zqc1105.github.io-1",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -12,30 +12,30 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/GitBash常用命令.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/GitBash常用命令.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Markdown.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Markdown.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/Nunit/功能.md",
       "output": {
         ".html": {
           "relative_path": "docs/Nunit/功能.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/getting-started.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/getting-started.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/introduction.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/introduction.html"
         }
       },
       "version": ""
@@ -69,6 +69,36 @@
       "output": {
         ".html": {
           "relative_path": "docs/字符串/比较.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/异步/ConfigureAwait.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/异步/ConfigureAwait.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/异步/ValueTask.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/异步/ValueTask.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/异步/概念.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/异步/概念.html"
         }
       },
       "version": ""

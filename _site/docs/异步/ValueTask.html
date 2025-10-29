@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>.NET 中 ValueTask 的全面指南。 | MyCSharpDocs </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content=".NET 中 ValueTask 的全面指南。 | MyCSharpDocs ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="MyCSharpDocs">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="net-中-valuetask-的全面指南">.NET 中 ValueTask 的全面指南。</h1>
+
+<p>ValueTask 全面指南：超越 Task 的高性能异步选择</p>
+<p>在 .NET 的异步编程世界里，Task 和 Task<t> 是长期以来的基石。然而，随着对性能要求的日益提高，特别是在高吞吐量、低延迟的场景下（如 Web 服务器、微服务、游戏服务器），Task 的内存分配开销逐渐成为瓶颈。为了解决这个问题，.NET 引入了 ValueTask 和 ValueTask<t>，作为 Task 的高性能补充。</t></t></p>
+<p>本指南将深入探讨 ValueTask 的设计哲学、工作原理、优势、陷阱以及最佳实践。</p>
+<h2 id="为什么-why-需要-valuetask-task-的痛点">为什么 (Why) 需要 ValueTask？—— Task 的痛点</h2>
+<p>Task 是一个引用类型（class）。每次创建一个未完成的 Task 对象（例如，通过 Task.Run 或异步方法中遇到 await 且操作未立即完成时），都会在托管堆 (heap) 上分配内存。</p>
+<p>对于频繁执行、快速完成的异步操作，这种分配会带来显著的性能问题：</p>
+<p>内存压力：大量的短期 Task 对象会迅速填满内存。
+垃圾回收 (GC) 压力：这些短期对象会频繁触发 GC，尤其是 Gen0 垃圾回收，导致 CPU 时间被消耗在内存管理上，而不是业务逻辑上。
+性能开销：内存分配和 GC 都是昂贵的操作。</p>
+<p>ValueTask 的设计目标就是消除或减少这种高频、短时异步操作的内存分配。 2. 是什么 (What) —— ValueTask 的核心概念</p>
+<p>ValueTask 和 ValueTask<tresult> 是结构体 (struct)，因此是值类型。它们本身存储在栈上（或内联在调用者中），不会在堆上产生分配。</tresult></p>
+<p>但 ValueTask 并不是凭空产生结果的。它内部通过一个巧妙的设计来实现零分配或低分配：</p>
+<p>成功且同步完成的场景：
+如果异步操作可以立即、同步地完成（例如，从内存缓存中读取数据，且数据存在），ValueTask 可以直接将结果（或一个表示成功的标记）内联存储在结构体内部。
+这种情况下，完全不需要堆分配。</p>
+<p>需要异步等待的场景：
+如果操作不能立即完成（例如，需要从网络或磁盘读取数据），ValueTask 会包装一个真实的 Task 对象。
+这个 Task 对象仍然会在堆上分配，但这是不可避免的，因为需要一个对象来协调异步操作的生命周期。
+ValueTask 作为一个轻量级的“外壳”，持有对这个 Task 的引用。</p>
+<p>关键点：ValueTask 本身是一个值类型外壳，它根据操作的完成方式，要么直接持有结果（零分配），要么引用一个 Task（一次分配，但这是必须的）。 3. 何时 (When) 使用 ValueTask？—— 最佳实践与场景</p>
+<p>ValueTask 并非 Task 的通用替代品。它的使用有明确的适用场景和限制。</p>
+<h2 id="应该使用-valuetask-的场景">应该使用 ValueTask 的场景：</h2>
+<ol>
+<li>高频调用的 I/O 操作：尤其是那些有很大概率同步完成的操作。
+示例：Stream.ReadAsync、Stream.WriteAsync。如果数据已经在缓冲区中，读取可以立即完成，返回一个零分配的 ValueTask<int>。如果数据不在缓冲区，需要等待 I/O 完成，则返回一个包装了 Task<int> 的 ValueTask<int>。</int></int></int></li>
+<li>自定义异步原语：当你在编写一个可能快速完成的异步方法时。
+示例：一个异步缓存查找方法。如果缓存命中，可以立即返回结果，非常适合 ValueTask<t>。</t></li>
+<li>性能关键路径：在对性能要求极高，且经过分析确认 Task 分配是瓶颈的代码中。</li>
+</ol>
+<p>❌ 不应该使用 ValueTask 的场景：</p>
+<ol>
+<li>返回 ValueTask 的方法体中包含了 await：
+这是最常见的陷阱！如果你在 async 方法中使用 await，编译器会强制创建一个状态机，这个状态机本身就是一个引用类型，会产生堆分配。此时使用 ValueTask 不会带来任何性能收益，反而增加了复杂性。
+ValueTask 的优势在于避免创建 Task 对象，但如果状态机本身就在堆上，省一个 Task 的意义不大。
+规则：只有当你能同步返回结果或直接返回一个已存在的 Task 时，ValueTask 才有意义。对于典型的 async/await 方法，坚持使用 Task。</li>
+<li>需要多次 await 同一个返回值：
+ValueTask 不是设计来被多次 await 的。await 一个 ValueTask 会消耗它（内部状态可能改变）。多次 await 可能导致未定义行为或异常。
+如果你需要多次检查或等待同一个操作，必须使用 Task，因为 Task 是可以安全地被多次 await 的。</li>
+<li>传递给 Task.WhenAll 或 Task.WhenAny：
+这些方法期望 Task 对象。虽然有 ValueTask 的重载，但通常不如直接使用 Task 高效或直观。如果需要组合多个操作，考虑是否值得为单个操作使用 ValueTask。</li>
+<li>作为方法参数：
+将 ValueTask 作为参数传递会迫使它被装箱（因为方法参数是引用），这违背了使用值类型的初衷。应优先使用 Task 作为参数。</li>
+<li>ValueTask 的陷阱与注意事项</li>
+</ol>
+<p>不可变性：ValueTask 在 await 后不应再被使用。
+装箱风险：任何需要将 ValueTask 当作 object 或接口（如 IValueTaskSource）处理的场景都可能导致装箱，产生堆分配。
+调试复杂性：由于 ValueTask 可能代表两种不同的内部状态（内联结果或引用 Task），调试时可能不如 Task 直观。
+API 设计：公开的 API 是否返回 ValueTask 需要仔细权衡。它向调用者传达了“此方法可能快速完成”的信号，但也增加了调用者的使用复杂性。 5. 总结</p>
+<p>Task 是默认选择：对于绝大多数异步方法，特别是包含 await 的 async 方法，始终使用 Task。它简单、安全、语义清晰。
+ValueTask 是性能优化工具：它是一个高级工具，用于在特定场景下（高频、可能同步完成的 I/O 操作）减少内存分配和 GC 压力。
+核心原则：ValueTask 的价值在于避免不必要的堆分配。如果使用它反而引入了状态机分配或使用上的复杂性，那么它就失去了意义。</p>
+<p>简单记忆：
+“用 Task 写代码，用 ValueTask 优化 I/O。”</p>
+<p>在决定使用 ValueTask 之前，务必进行性能分析，确认 Task 分配确实是瓶颈，并且你的使用方式符合最佳实践，避免陷入陷阱。</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ZQC1105/zqc1105.github.io/blob/main/docs/异步/ValueTask.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

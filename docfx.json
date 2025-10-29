@@ -1,41 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
-  "metadata": [
-    {
-      "src": [
-        {
-          "src": "../E:\\Git\\DocFX",
-          "files": [
-            "**/*.csproj"
-          ]
-        }
-      ],
-      "dest": "api"
-    }
-  ],
   "build": {
     "content": [
       {
-        "files": [
-          "**/*.{md,yml}"
-        ],
-        "exclude": [
-          "_site/**"
-        ]
+        "files": ["**/*.{md,yml}"],
+        "exclude": ["_site/**"]
       }
     ],
     "resource": [
       {
-        "files": [
-          "images/**"
-        ]
+        "files": ["images/**"]
       }
     ],
     "output": "_site",
-    "template": [
-      "default",
-      "templates/minimal"
-    ],
+    "template": ["default", "templates/minimal"],
     "globalMetadata": {
       "_appName": "MyCSharpDocs",
       "_appTitle": "MyCSharpDocs",
