@@ -64,34 +64,21 @@
       "version": ""
     },
     {
-      "type": "Toc",
-      "source_relative_path": "docs/字符串/toc.yml",
+      "type": "Conceptual",
+      "source_relative_path": "docs/字符串/基本操作.md",
       "output": {
         ".html": {
-          "relative_path": "docs/字符串/toc.html"
-        },
-        ".json": {
-          "relative_path": "docs/字符串/toc.json"
+          "relative_path": "docs/字符串/基本操作.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/字符串/字符串-比较.md",
+      "source_relative_path": "docs/字符串/比较.md",
       "output": {
         ".html": {
-          "relative_path": "docs/字符串/字符串-比较.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/字符串/字符串的基本操作.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/字符串/字符串的基本操作.html"
+          "relative_path": "docs/字符串/比较.html"
         }
       },
       "version": ""

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | MyCSharpDocs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | MyCSharpDocs ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/ZQC1105/zqc1105.github.io/blob/main/docs/字符串/比较.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="MyCSharpDocs">
+            MyCSharpDocs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<ol>
+<li>首选 StringComparison 枚举</li>
+</ol>
+<p>这是最重要、最核心的实践。在调用任何涉及字符串比较的方法时（如 string.Equals, string.Compare, string.StartsWith, string.Contains, string.IndexOf 等），应使用接受 StringComparison 枚举作为参数的重载。</p>
+<p>为什么？
+避免歧义：默认的字符串比较行为（通常是区分大小写的序号比较）可能不符合你的业务逻辑。
+提高性能：某些比较类型（如 Ordinal）比文化感知比较更快。
+增强可读性：代码明确表达了你的意图。
+防止错误：尤其是在处理用户输入或跨区域环境时，不正确的比较可能导致安全漏洞或逻辑错误。</p>
+<p>常用 StringComparison 成员：</p>
+<p>枚举值 含义 推荐场景
+:--- :--- :---
+Ordinal 区分大小写的序号比较（基于字符的 Unicode 码点）。 首选！ 用于技术性比较，如文件名、URL、GUID、XML 标签、哈希值、字典键等。性能最高。
+OrdinalIgnoreCase 不区分大小写的序号比较。 当需要忽略大小写进行技术性比较时（如比较 HTTP 头名称 &quot;Content-Type&quot; 和 &quot;content-type&quot;）。性能高。
+CurrentCulture 基于当前线程的文化设置进行区分大小写的语言学比较。 当需要根据用户的本地化规则对用户可见的字符串进行排序或显示时。
+CurrentCultureIgnoreCase 基于当前线程的文化设置进行不区分大小写的语言学比较。 同上，但忽略大小写。
+InvariantCulture 基于固定不变的文化（invariant culture）进行区分大小写的语言学比较。 当需要一种与区域无关、稳定一致的比较结果时（例如，在持久化数据或网络协议中）。
+InvariantCultureIgnoreCase 基于固定不变的文化进行不区分大小写的语言学比较。 同上，但忽略大小写。 2. 默认选择：Ordinal 或 OrdinalIgnoreCase</p>
+<p>微软强烈建议：
+对于大多数编程场景，尤其是那些不面向最终用户的、基于技术标识符的比较，请使用 Ordinal 或 OrdinalIgnoreCase。</p>
+<p>原因：
+性能：序号比较是最快的，因为它直接比较字符的二进制值。
+稳定性：结果不会因用户的区域设置而改变。
+安全性：避免了因文化差异导致的意外行为。</p>
+<p>示例：</p>
+<pre><code class="lang-csharp">// ✅ 推荐：使用 StringComparison 明确指定
+bool isEqual = string.Equals(str1, str2, StringComparison.Ordinal);
+bool startsWith = fileName.StartsWith(&quot;log\_&quot;, StringComparison.OrdinalIgnoreCase);
+int index = text.IndexOf(&quot;ERROR&quot;, StringComparison.OrdinalIgnoreCase);
+
+// ❌ 不推荐：依赖默认行为（通常是 Ordinal，但不明确）
+bool isEqual = str1 == str2;
+bool startsWith = fileName.StartsWith(&quot;log\_&quot;); // 可能不是你想要的！
+</code></pre>
+<ol start="3">
+<li>文化感知比较 (CurrentCulture) 的适用场景</li>
+</ol>
+<p>仅在以下情况使用 CurrentCulture 或 CurrentCultureIgnoreCase：
+比较或排序面向最终用户的文本。
+结果将显示给用户，并且需要符合用户的语言习惯。
+例如：联系人列表按姓名排序、文档标题搜索等。</p>
+<pre><code class="lang-csharp">// 示例：对用户姓名进行排序
+Array.Sort(names, StringComparer.CurrentCulture); 
+</code></pre>
+<ol start="4">
+<li>避免使用不带 StringComparison 参数的重载</li>
+</ol>
+<p>许多字符串方法有多个重载。应优先选择接受 StringComparison 参数的那个。</p>
+<pre><code class="lang-csharp">// ❌ 避免
+if (input.ToLower() == &quot;yes&quot;) { ... } // ToLower 分配内存，且行为不明确
+
+// ✅ 推荐
+if (string.Equals(input, &quot;yes&quot;, StringComparison.OrdinalIgnoreCase)) { ... }
+
+// ❌ 避免
+if (path.EndsWith(&quot;.txt&quot;)) { ... }
+
+// ✅ 推荐
+if (path.EndsWith(&quot;.txt&quot;, StringComparison.OrdinalIgnoreCase)) { ... } 
+</code></pre>
+<ol start="5">
+<li>使用 StringComparer 类进行集合操作</li>
+</ol>
+<p>当创建基于字符串的集合（如 Dictionary&lt;string, T&gt; 或 HashSet<string>）时，使用 StringComparer 来指定比较方式。</string></p>
+<pre><code class="lang-csharp">// 创建一个不区分大小写的字典
+var dict = new Dictionary&lt;string, string&gt;(StringComparer.OrdinalIgnoreCase)
+{
+{ &quot;Key1&quot;, &quot;Value1&quot; },
+{ &quot;KEY2&quot;, &quot;Value2&quot; }
+};
+
+// 这样可以通过 &quot;key1&quot; 或 &quot;KEY1&quot; 来访问
+Console.WriteLine(dict[&quot;key1&quot;]); // 输出 &quot;Value1&quot; 6. 注意 == 操作符的行为
+</code></pre>
+<p>string 类型重载了 == 操作符，它执行的是区分大小写的序号比较（相当于 StringComparison.Ordinal）。</p>
+<p>可以安全使用 == 进行简单的、区分大小写的相等判断。
+但如果有忽略大小写的需求，必须使用 Equals 方法并指定 StringComparison.OrdinalIgnoreCase。</p>
+<pre><code class="lang-csharp">string a = &quot;Hello&quot;;
+string b = &quot;HELLO&quot;;
+
+Console.WriteLine(a == b); // False (Ordinal)
+Console.WriteLine(string.Equals(a, b, StringComparison.OrdinalIgnoreCase)); // True 7. 跨平台一致性考虑
+</code></pre>
+<p>在 .NET Framework 和 .NET Core/.NET 5+ 之间，或在不同操作系统上，文化感知比较的结果可能略有差异。如果需要绝对一致的结果，优先使用 Ordinal、OrdinalIgnoreCase 或 InvariantCulture。</p>
+<p>总结：微软推荐的检查清单</p>
+<ol>
+<li>明确指定：在所有字符串比较操作中，使用 StringComparison 枚举。</li>
+<li>默认序号：除非有特定的语言学需求，否则优先选择 StringComparison.Ordinal 或 StringComparison.OrdinalIgnoreCase。</li>
+<li>用户界面用文化：仅在向用户显示排序或比较结果时，使用 CurrentCulture。</li>
+<li>集合用 StringComparer：为字符串集合指定合适的比较器。</li>
+<li>避免旧式方法：不要依赖 ToLower()/ToUpper() 进行比较，这既低效又可能出错。</li>
+</ol>
+<p>遵循这些实践，可以确保你的字符串比较代码是高效、正确、安全且可维护的。</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/ZQC1105/zqc1105.github.io/blob/main/docs/字符串/比较.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
