@@ -86,9 +86,7 @@
 
         <article data-uid="">
 
-<ol>
-<li>首选 StringComparison 枚举</li>
-</ol>
+<h2 id="首选-stringcomparison-枚举">首选 StringComparison 枚举</h2>
 <p>这是最重要、最核心的实践。在调用任何涉及字符串比较的方法时（如 string.Equals, string.Compare, string.StartsWith, string.Contains, string.IndexOf 等），应使用接受 StringComparison 枚举作为参数的重载。</p>
 <p>为什么？
 避免歧义：默认的字符串比较行为（通常是区分大小写的序号比较）可能不符合你的业务逻辑。
@@ -103,7 +101,8 @@ OrdinalIgnoreCase 不区分大小写的序号比较。 当需要忽略大小写�
 CurrentCulture 基于当前线程的文化设置进行区分大小写的语言学比较。 当需要根据用户的本地化规则对用户可见的字符串进行排序或显示时。
 CurrentCultureIgnoreCase 基于当前线程的文化设置进行不区分大小写的语言学比较。 同上，但忽略大小写。
 InvariantCulture 基于固定不变的文化（invariant culture）进行区分大小写的语言学比较。 当需要一种与区域无关、稳定一致的比较结果时（例如，在持久化数据或网络协议中）。
-InvariantCultureIgnoreCase 基于固定不变的文化进行不区分大小写的语言学比较。 同上，但忽略大小写。 2. 默认选择：Ordinal 或 OrdinalIgnoreCase</p>
+InvariantCultureIgnoreCase 基于固定不变的文化进行不区分大小写的语言学比较。 同上，但忽略大小写。</p>
+<h2 id="默认选择ordinal-或-ordinalignorecase">默认选择：Ordinal 或 OrdinalIgnoreCase</h2>
 <p>微软强烈建议：
 对于大多数编程场景，尤其是那些不面向最终用户的、基于技术标识符的比较，请使用 Ordinal 或 OrdinalIgnoreCase。</p>
 <p>原因：
@@ -120,9 +119,7 @@ int index = text.IndexOf(&quot;ERROR&quot;, StringComparison.OrdinalIgnoreCase);
 bool isEqual = str1 == str2;
 bool startsWith = fileName.StartsWith(&quot;log\_&quot;); // 可能不是你想要的！
 </code></pre>
-<ol start="3">
-<li>文化感知比较 (CurrentCulture) 的适用场景</li>
-</ol>
+<h2 id="文化感知比较-currentculture-的适用场景">文化感知比较 (CurrentCulture) 的适用场景</h2>
 <p>仅在以下情况使用 CurrentCulture 或 CurrentCultureIgnoreCase：
 比较或排序面向最终用户的文本。
 结果将显示给用户，并且需要符合用户的语言习惯。
@@ -130,9 +127,7 @@ bool startsWith = fileName.StartsWith(&quot;log\_&quot;); // 可能不是你想�
 <pre><code class="lang-csharp">// 示例：对用户姓名进行排序
 Array.Sort(names, StringComparer.CurrentCulture); 
 </code></pre>
-<ol start="4">
-<li>避免使用不带 StringComparison 参数的重载</li>
-</ol>
+<h2 id="避免使用不带-stringcomparison-参数的重载">避免使用不带 StringComparison 参数的重载</h2>
 <p>许多字符串方法有多个重载。应优先选择接受 StringComparison 参数的那个。</p>
 <pre><code class="lang-csharp">// ❌ 避免
 if (input.ToLower() == &quot;yes&quot;) { ... } // ToLower 分配内存，且行为不明确
@@ -146,9 +141,7 @@ if (path.EndsWith(&quot;.txt&quot;)) { ... }
 // ✅ 推荐
 if (path.EndsWith(&quot;.txt&quot;, StringComparison.OrdinalIgnoreCase)) { ... } 
 </code></pre>
-<ol start="5">
-<li>使用 StringComparer 类进行集合操作</li>
-</ol>
+<h2 id="使用-stringcomparer-类进行集合操作">使用 StringComparer 类进行集合操作</h2>
 <p>当创建基于字符串的集合（如 Dictionary&lt;string, T&gt; 或 HashSet<string>）时，使用 StringComparer 来指定比较方式。</string></p>
 <pre><code class="lang-csharp">// 创建一个不区分大小写的字典
 var dict = new Dictionary&lt;string, string&gt;(StringComparer.OrdinalIgnoreCase)

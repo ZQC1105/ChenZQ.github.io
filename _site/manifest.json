@@ -12,20 +12,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/Test1.md",
+      "source_relative_path": "docs/Nunit/功能.md",
       "output": {
         ".html": {
-          "relative_path": "docs/Test1.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/Test2.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/Test2.html"
+          "relative_path": "docs/Nunit/功能.html"
         }
       },
       "version": ""

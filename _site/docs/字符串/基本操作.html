@@ -88,9 +88,7 @@
 
 <p>下面是对这三种特性及其组合的全面介绍：</p>
 <p>C# 字符串处理三剑客：@、$ 和 &quot;&quot;&quot;</p>
-<ol>
-<li>逐字字符串 (Verbatim Strings) - @</li>
-</ol>
+<h2 id="逐字字符串-verbatim-strings---">逐字字符串 (Verbatim Strings) - @</h2>
 <p>语法：以 @ 符号开头，后跟双引号包围的字符串。</p>
 <pre><code class="lang-csharp">string path = @&quot;C:\Users\John\Documents\file.txt&quot;;
 string multiLine = @&quot;第一行
@@ -104,7 +102,8 @@ string multiLine = @&quot;第一行
 双引号需要转义：如果字符串内部需要包含双引号 &quot;，必须用两个双引号 &quot;&quot; 来表示。</p>
 <pre><code class="lang-csharp">string quote = @&quot;She said, &quot;&quot;Hello!&quot;&quot;&quot;;
 </code></pre>
-<p>格式受限：虽然支持多行，但格式（如缩进）会原样保留，有时不够灵活。 2. 内插字符串 (Interpolated Strings) - $</p>
+<p>格式受限：虽然支持多行，但格式（如缩进）会原样保留，有时不够灵活。</p>
+<h2 id="内插字符串-interpolated-strings---">内插字符串 (Interpolated Strings) - $</h2>
 <p>语法：以 $ 符号开头，后跟双引号包围的字符串，字符串中使用 {} 包围表达式。</p>
 <pre><code class="lang-csharp">string name = &quot;Alice&quot;;
 int age = 30;
@@ -117,8 +116,9 @@ string greeting = $&quot;Hello, {name}! You are {age} years old.&quot;;
 <pre><code class="lang-csharp">double price = 123.456;
 string formatted = $&quot;Price: {price:C2}&quot;; // 货币格式，保留两位小数
 </code></pre>
-<p>优势：比 string.Format 或 + 拼接更直观、更易读。 3. 原始字符串字面量 (Raw String Literals) - &quot;&quot;&quot; (C# 11+)
-如前所述，使用三个双引号 &quot;&quot;&quot; 定界，提供最强大的多行和无转义体验。</p>
+<p>优势：比 string.Format 或 + 拼接更直观、更易读。 、</p>
+<h2 id="原始字符串字面量-raw-string-literals----c-11">原始字符串字面量 (Raw String Literals) - &quot;&quot;&quot; (C# 11+)</h2>
+<p>如前所述，使用三个双引号 &quot;&quot;&quot; 定界，提供最强大的多行和无转义体验。</p>
 <p>组合使用：@、$ 和 &quot;&quot;&quot; 的协同效应</p>
 <p>这三种特性可以按特定顺序组合，发挥最大威力。
 组合 1: $ + @ (内插 + 逐字)</p>
@@ -202,7 +202,7 @@ $@&quot;&quot;&quot;...&quot;&quot;&quot; 虽然合法，但 @ 是多余的，�
 </ol>
 <p>总结：$&quot;&quot;&quot;...&quot;&quot;&quot; 是现代 C# 中处理复杂字符串的终极武器。它让你可以像写纯文本一样编写字符串，同时享受内插和格式化的便利，是提升代码可读性和开发效率的利器。</p>
 <p>好的，这是关于 C# 原始字符串字面量（Raw String Literals）的详细介绍。</p>
-<p>C# 原始字符串字面量 (Raw String Literals) 全面介绍</p>
+<h2 id="c-原始字符串字面量-raw-string-literals-全面介绍">C# 原始字符串字面量 (Raw String Literals) 全面介绍</h2>
 <p>从 C# 11 开始，C# 引入了原始字符串字面量 (Raw String Literals)。这是一个强大的新特性，旨在解决传统字符串在处理多行文本、包含大量引号或转义字符时的繁琐和易错问题。</p>
 <ol>
 <li>什么是原始字符串字面量？</li>
@@ -312,7 +312,8 @@ ORDER BY Name;
 // &quot;SELECT FROM Users\nWHERE Active = 1\nORDER BY Name;\n&quot;
 // （左侧的 16 个空格被修剪掉了）</p>
 <p>// 示例 3：混合空格和制表符（不推荐，行为可能复杂）
-// 最好统一使用空格或制表符。 5. 插值 (Interpolation) 支持</p>
+// 最好统一使用空格或制表符。
+5. 插值 (Interpolation) 支持</p>
 <p>原始字符串字面量完全支持字符串插值 $。</p>
 <pre><code class="lang-csharp">string name = &quot;Alice&quot;;
 int age = 30;
@@ -323,12 +324,14 @@ I am {age} years old.
 &quot;&quot;&quot;;
 </code></pre>
 <p>// 结果: &quot;Hello, my name is Alice.\nI am 30 years old.\n&quot;</p>
-<p>注意：插值表达式 {} 内部仍然遵循正常的 C# 语法，如果需要在插值表达式中使用 &quot;&quot;&quot;，可能需要额外的处理。 6. 注意事项与最佳实践</p>
+<p>注意：插值表达式 {} 内部仍然遵循正常的 C# 语法，如果需要在插值表达式中使用 &quot;&quot;&quot;，可能需要额外的处理。
+6. 注意事项与最佳实践</p>
 <p>C# 11 及以上：确保你的项目目标框架支持 C# 11 (.NET 7 或更高版本，或配置了 C# 11)。
 结束定界符：结束的 &quot;&quot;&quot; 必须独占一行。如果它和其他字符在同一行，编译器会报错。
 修剪行为：理解修剪规则，合理利用它来保持代码美观而不影响字符串内容。
 性能：与普通字符串字面量一样，原始字符串字面量也是在编译时确定的，没有运行时性能开销。
-可读性：对于简单的单行字符串，传统字符串可能更简洁。原始字符串最适合复杂的多行、高转义需求的场景。 7. 总结</p>
+可读性：对于简单的单行字符串，传统字符串可能更简洁。原始字符串最适合复杂的多行、高转义需求的场景。
+7. 总结</p>
 <p>C# 的原始字符串字面量 (&quot;&quot;&quot;...&quot;&quot;&quot;) 是一个革命性的特性，它：</p>
 <p>极大地提升了处理 JSON、SQL、正则表达式、模板等多行或高转义文本的代码可读性和可维护性。
 消除了繁琐的引号和反斜杠转义。
