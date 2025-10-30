@@ -12,6 +12,56 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/ASP-NET-Core/FromBody.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/ASP-NET-Core/FromBody.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/ASP-NET-Core/FromForm.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/ASP-NET-Core/FromForm.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/ASP-NET-Core/模型绑定.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/ASP-NET-Core/模型绑定.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/ASP-NET-Core/模型验证.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/ASP-NET-Core/模型验证.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/创建和配置模型.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/创建和配置模型.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/GitBash常用命令.md",
       "output": {
         ".html": {
