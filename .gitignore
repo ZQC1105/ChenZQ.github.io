@@ -1,0 +1,25 @@
+# =========================
+# DocFX Build Output
+# =========================
+_site/
+_site/*
+
+# =========================
+# Common System Files
+# =========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# =========================
+# Logs and temporary files
+# =========================
+*.log
+*.tmp
