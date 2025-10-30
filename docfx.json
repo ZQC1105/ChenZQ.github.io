@@ -13,7 +13,7 @@
       }
     ],
     "output": "_site",
-    "template": ["default", "templates/minimal"],
+    "template": ["default", "modern"],
     "globalMetadata": {
       "_appName": "MyCSharpDocs",
       "_appTitle": "MyCSharpDocs",
