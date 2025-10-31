@@ -20,8 +20,8 @@
       href: 异步/ValueTask.md
 - name: ASP-NET-Core
   items:
-    - name: 模型绑定
-      href: ASP-NET-Core/模型绑定.md
+    - name: 模型绑定-查询和路径
+      href: ASP-NET-Core/模型绑定-查询和路径.md
     - name: 模型验证
       href: ASP-NET-Core/模型验证.md
     - name: FromBody

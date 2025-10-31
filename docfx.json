@@ -15,8 +15,8 @@
     "output": "_site",
     "template": ["default", "modern"],
     "globalMetadata": {
-      "_appName": "MyCSharpDocs",
-      "_appTitle": "MyCSharpDocs",
+      "_appName": "CZQDocs",
+      "_appTitle": "CZQDocs",
       "_enableSearch": true,
       "pdf": false
     }
