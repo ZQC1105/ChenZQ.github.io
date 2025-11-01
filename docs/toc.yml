@@ -8,8 +8,13 @@
       href: 字符串/基本操作.md
     - name: 比较
       href: 字符串/比较.md
-- name: Nunit
-  href: Nunit/功能.md
+- name: Testing
+  items:
+    - name: Nunit
+      href: Testing/Nunit.md
+    - name: NET的单元测试最佳做法
+      href: Testing/NET的单元测试最佳做法.md
+
 - name: 异步
   items:
     - name: 概念
@@ -32,4 +37,14 @@
   items:
     - name: 创建和配置模型
       href: EF-Core/创建和配置模型.md
+    - name: 备用密钥
+      href: EF-Core/备用密钥.md
+    - name: Database-First
+      href: EF-Core/Database-First.md
+    - name: Code-First和Database-First
+      href: EF-Core/Code-First和Database-First.md
+    - name: SQL 数据库项目 
+      href: EF-Core/SQL 数据库项目 .md    
+      
+      
 

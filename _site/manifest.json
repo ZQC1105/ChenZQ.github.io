@@ -52,10 +52,50 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/Code-First和Database-First.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/Code-First和Database-First.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/Database-First.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/Database-First.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/SQL 数据库项目 .md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/SQL 数据库项目 .html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/EF-Core/创建和配置模型.md",
       "output": {
         ".html": {
           "relative_path": "docs/EF-Core/创建和配置模型.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/备用密钥.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/备用密钥.html"
         }
       },
       "version": ""
@@ -82,10 +122,30 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/Nunit/功能.md",
+      "source_relative_path": "docs/Nuget/1.md",
       "output": {
         ".html": {
-          "relative_path": "docs/Nunit/功能.html"
+          "relative_path": "docs/Nuget/1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Testing/NET的单元测试最佳做法.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/NET的单元测试最佳做法.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Testing/Nunit.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/Nunit.html"
         }
       },
       "version": ""
@@ -99,6 +159,36 @@
         },
         ".json": {
           "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/字符串/JSON.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/字符串/JSON.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/字符串/Newtonsoft.Json.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/字符串/Newtonsoft.Json.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/字符串/System.Text.Json.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/字符串/System.Text.Json.html"
         }
       },
       "version": ""
@@ -172,6 +262,39 @@
         },
         ".json": {
           "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "软件架构和设计/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "软件架构和设计/toc.html"
+        },
+        ".json": {
+          "relative_path": "软件架构和设计/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "软件架构和设计/插件系统.md",
+      "output": {
+        ".html": {
+          "relative_path": "软件架构和设计/插件系统.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "软件架构和设计/显式依赖项原则.md",
+      "output": {
+        ".html": {
+          "relative_path": "软件架构和设计/显式依赖项原则.html"
         }
       },
       "version": ""
