@@ -1,5 +1,5 @@
 {
-  "source_base_path": "E:/Git/DocFX/zqc1105.github.io",
+  "source_base_path": "D:/快捷键/重要项目/Git/zqc1105.github.io-1",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -26,6 +26,16 @@
       "output": {
         ".html": {
           "relative_path": "docs/ASP-NET-Core/FromForm.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/ASP-NET-Core/Nginx反向代理.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/ASP-NET-Core/Nginx反向代理.html"
         }
       },
       "version": ""
