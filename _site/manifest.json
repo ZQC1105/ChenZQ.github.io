@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/快捷键/重要项目/Git/zqc1105.github.io-1",
+  "source_base_path": "E:/Git/DocFX/zqc1105.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -82,6 +82,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/Realtions.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/Realtions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/EF-Core/SQL 数据库项目 .md",
       "output": {
         ".html": {
@@ -106,6 +116,16 @@
       "output": {
         ".html": {
           "relative_path": "docs/EF-Core/备用密钥.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/软删除.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/软删除.html"
         }
       },
       "version": ""
@@ -156,6 +176,66 @@
       "output": {
         ".html": {
           "relative_path": "docs/Testing/Nunit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/2025-10-24-WPF-ControlTemplate 和ControlTemplate.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/2025-10-24-WPF-ControlTemplate 和ControlTemplate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/2025-10-25-WPF-依赖属性.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/2025-10-25-WPF-依赖属性.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/2025-10-25-WPF-依赖属性元数据类.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/2025-10-25-WPF-依赖属性元数据类.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/2025-10-26-WPF-内容模型.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/2025-10-26-WPF-内容模型.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/2025-10-26-WPF-路由事件.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/2025-10-26-WPF-路由事件.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/WPF功能.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/WPF功能.html"
         }
       },
       "version": ""
