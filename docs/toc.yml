@@ -57,5 +57,13 @@
       href: WPF/依赖属性元数据类.md
     - name: 路由事件
       href: WPF/路由事件.md
+- name: SQL-Server
+  items: 
+    - name: 数据库
+      href: SQL-Server/数据库.md
+    - name: Transact-SQL
+      href: SQL-Server/Transact-SQL.md
+    - name: CQRS
+      href: SQL-Server/CQRS.md
       
 
