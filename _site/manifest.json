@@ -82,6 +82,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/Realtions.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/Realtions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/EF-Core/SQL 数据库项目 .md",
       "output": {
         ".html": {
@@ -106,6 +116,16 @@
       "output": {
         ".html": {
           "relative_path": "docs/EF-Core/备用密钥.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/EF-Core/软删除.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/EF-Core/软删除.html"
         }
       },
       "version": ""
