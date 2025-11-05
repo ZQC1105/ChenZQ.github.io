@@ -182,50 +182,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/WPF/2025-10-24-WPF-ControlTemplate 和ControlTemplate.md",
+      "source_relative_path": "docs/WPF/ControlTemplate和ControlTemplate.md",
       "output": {
         ".html": {
-          "relative_path": "docs/WPF/2025-10-24-WPF-ControlTemplate 和ControlTemplate.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/WPF/2025-10-25-WPF-依赖属性.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/WPF/2025-10-25-WPF-依赖属性.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/WPF/2025-10-25-WPF-依赖属性元数据类.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/WPF/2025-10-25-WPF-依赖属性元数据类.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/WPF/2025-10-26-WPF-内容模型.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/WPF/2025-10-26-WPF-内容模型.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/WPF/2025-10-26-WPF-路由事件.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/WPF/2025-10-26-WPF-路由事件.html"
+          "relative_path": "docs/WPF/ControlTemplate和ControlTemplate.html"
         }
       },
       "version": ""
@@ -236,6 +196,46 @@
       "output": {
         ".html": {
           "relative_path": "docs/WPF/WPF功能.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/依赖属性.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/依赖属性.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/依赖属性元数据类.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/依赖属性元数据类.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/内容模型.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/内容模型.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/WPF/路由事件.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/WPF/路由事件.html"
         }
       },
       "version": ""

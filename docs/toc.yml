@@ -44,7 +44,18 @@
     - name: Code-First和Database-First
       href: EF-Core/Code-First和Database-First.md
     - name: SQL 数据库项目 
-      href: EF-Core/SQL 数据库项目 .md    
-      
+      href: EF-Core/SQL 数据库项目 .md  
+- name: WPF
+  items:
+    - name: 内容模型
+      href: WPF/内容模型.md
+    - name: ControlTemplate和ControlTemplate
+      href: WPF/ControlTemplate和ControlTemplate.md
+    - name: 依赖属性
+      href: WPF/依赖属性.md
+    - name: 依赖属性元数据类
+      href: WPF/依赖属性元数据类.md
+    - name: 路由事件
+      href: WPF/路由事件.md
       
 
