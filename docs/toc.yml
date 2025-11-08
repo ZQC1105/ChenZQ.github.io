@@ -14,7 +14,16 @@
       href: Testing/Nunit.md
     - name: NET的单元测试最佳做法
       href: Testing/NET的单元测试最佳做法.md
-
+    - name: 引言与测试基础
+      href: Testing/引言与测试基础.md
+    - name: xUnit.net
+      href: Testing/xUnit.net.md
+    - name: Moq
+      href: Testing/Moq.md
+    - name: Microsoft.EntityFrameworkCore.InMemory
+      href: Testing/Microsoft.EntityFrameworkCore.InMemory.md
+    - name: EF-Core测试总结
+      href: Testing/EF-Core测试总结.md
 - name: 异步
   items:
     - name: 概念
@@ -37,14 +46,14 @@
   items:
     - name: 创建和配置模型
       href: EF-Core/创建和配置模型.md
-    - name: 备用密钥
-      href: EF-Core/备用密钥.md
+    - name: 备用键
+      href: EF-Core/备用键.md
     - name: Database-First
       href: EF-Core/Database-First.md
     - name: Code-First和Database-First
       href: EF-Core/Code-First和Database-First.md
     - name: SQL 数据库项目 
-      href: EF-Core/SQL 数据库项目 .md  
+      href: EF-Core/SQL 数据库项目.md  
 - name: WPF
   items:
     - name: 内容模型

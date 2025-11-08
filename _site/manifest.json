@@ -92,10 +92,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/EF-Core/SQL 数据库项目 .md",
+      "source_relative_path": "docs/EF-Core/SQL 数据库项目.md",
       "output": {
         ".html": {
-          "relative_path": "docs/EF-Core/SQL 数据库项目 .html"
+          "relative_path": "docs/EF-Core/SQL 数据库项目.html"
         }
       },
       "version": ""
@@ -112,10 +112,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/EF-Core/备用密钥.md",
+      "source_relative_path": "docs/EF-Core/备用键.md",
       "output": {
         ".html": {
-          "relative_path": "docs/EF-Core/备用密钥.html"
+          "relative_path": "docs/EF-Core/备用键.html"
         }
       },
       "version": ""
@@ -192,6 +192,36 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/Testing/EF-Core测试总结.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/EF-Core测试总结.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Testing/Microsoft.EntityFrameworkCore.InMemory.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/Microsoft.EntityFrameworkCore.InMemory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Testing/Moq.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/Moq.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/Testing/NET的单元测试最佳做法.md",
       "output": {
         ".html": {
@@ -206,6 +236,36 @@
       "output": {
         ".html": {
           "relative_path": "docs/Testing/Nunit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Testing/TDD.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/TDD.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Testing/xUnit.net.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/xUnit.net.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/Testing/引言与测试基础.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/Testing/引言与测试基础.html"
         }
       },
       "version": ""
