@@ -311,3 +311,76 @@ public class TodoContext : DbContext
 - 任何"可能真为 null"的情况（用 `?` 或空检查）
 
 **核心原则**：`null!` 是**框架专属模式**，不是业务代码的通用解决方案。它意味着"框架保证，编译器别管"。
+
+
+`required` 和“可空”是两个**正交**的概念：  
+一个解决“**必须赋值**”的问题，一个解决“**能不能存 null**”的问题。  
+下面用一句话+一张表+一段代码彻底分清。
+
+---
+
+### 🔑 一句话
+- `required` ＝ **“调用者必须给我赋值”**（编译器检查是否写了 `new X { … }`）。  
+- `T?` ＝ **“我里面可以存 null”**（编译器检查你是否把 null 当非空用了）。
+
+---
+
+### 📊 对照表
+
+| 写法               | 能否为 null | 调用者是否必须写 | 编译器是否报警 | 适用场景 |
+|--------------------|-------------|------------------|----------------|----------|
+| `string Name`      | ❌ 不可 null | ❌ 不强制        | 若没赋值→无    | 旧代码兼容 |
+| `string? Name`     | ✅ 可 null   | ❌ 不强制        | 解引用时报警   | 可选字段 |
+| `required string Name` | ❌ 不可 null | ✅ 强制          | 没写→CS9035    | 必须给的非空值 |
+| `required string? Name` | ✅ 可 null   | ✅ 强制          | 解引用时报警   | 必须给，但可以给 null |
+
+---
+
+### 🧪 代码体验
+
+```csharp
+#nullable enable
+
+public record Person
+{
+    public required string Id   { get; init; }   // 必须给，且不能是 null
+    public required string? Bio { get; init; }   // 必须给，但允许显式给 null
+}
+
+// ✅ OK
+var p1 = new Person { Id = "123", Bio = null };
+
+// ❌ CS9035 没给 Id
+var p2 = new Person { Bio = "hello" };
+
+// ❌ CS9035 没给 Bio
+var p3 = new Person { Id = "123" };
+
+// ❌ CS8625 试图把 null 给不可 null 的 Id
+var p4 = new Person { Id = null!, Bio = "hi" };
+```
+
+---
+
+### ✅ 记忆口诀
+- **required** → “有没有写”  
+- **?** → “能不能是 null”
+
+
+
+在 **引用类型** 场景下，`is not null` 和 `!= null` 几乎**等价**，但：
+
+1. **值类型/可空值类型** 只有 `is not null` 能编译通过；  
+2. **运算符重载**场景下，`is not null` **永远只比较引用**，不会踩到重载的 `!=` 陷阱；  
+3. **模式匹配** 语法统一，可读性更高。
+
+---
+
+### ✅ 推荐
+**统一写 `is not null` / `is null`** —— 语法清晰、不会踩坑、对值类型也通用。
+
+```csharp
+if (obj is not null) { ... }   // 推荐
+```
+
+`!= null` 只保留在 **旧代码** 或 **你需要显式调用重载的 != 运算符** 的极特殊场景。
