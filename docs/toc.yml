@@ -2,12 +2,6 @@
   href: Markdown.md
 - name: GitBash常用命令
   href: GitBash常用命令.md
-- name: 字符串
-  items:
-    - name: 基本操作
-      href: 字符串/基本操作.md
-    - name: 比较
-      href: 字符串/比较.md
 - name: Testing
   items:
     - name: Nunit

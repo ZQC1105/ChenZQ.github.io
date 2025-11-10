@@ -312,6 +312,7 @@ public class TodoContext : DbContext
 
 **核心原则**：`null!` 是**框架专属模式**，不是业务代码的通用解决方案。它意味着"框架保证，编译器别管"。
 
+<<<<<<< HEAD:docs/C#/Null.md
 
 `required` 和“可空”是两个**正交**的概念：  
 一个解决“**必须赋值**”的问题，一个解决“**能不能存 null**”的问题。  
@@ -384,3 +385,26 @@ if (obj is not null) { ... }   // 推荐
 ```
 
 `!= null` 只保留在 **旧代码** 或 **你需要显式调用重载的 != 运算符** 的极特殊场景。
+=======
+是的，**`required` 要求必须在对象被 new 出来的时候完成赋值**，否则编译器直接报错。  
+有两种写法可以满足它：
+
+1. 对象初始化器  
+```csharp
+var p = new Person { Name = "Tom" };   // ✅
+```
+
+2. 构造函数参数（如果写了对应构造函数）  
+```csharp
+public Person(string name) => Name = name;
+
+var p = new Person("Tom");             // ✅
+```
+
+如果这样写就会失败：  
+```csharp
+var p = new Person();                  // ❌ 编译错误：Name 未赋值
+```
+
+总结：**new 的同时必须让编译器“看到”Name 被赋值**，否则通不过编译。
+>>>>>>> 70a71af46465749bdb6d25b0e400f0ade0a207d6:CSharp/Null.md

@@ -1,4 +1,6 @@
 - name: Docs
   href: docs/
+- name: CSharp
+  href: CSharp/
 - name: 软件架构和设计
   href: 软件架构和设计/
