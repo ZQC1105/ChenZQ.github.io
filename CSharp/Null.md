@@ -311,3 +311,25 @@ public class TodoContext : DbContext
 - 任何"可能真为 null"的情况（用 `?` 或空检查）
 
 **核心原则**：`null!` 是**框架专属模式**，不是业务代码的通用解决方案。它意味着"框架保证，编译器别管"。
+
+是的，**`required` 要求必须在对象被 new 出来的时候完成赋值**，否则编译器直接报错。  
+有两种写法可以满足它：
+
+1. 对象初始化器  
+```csharp
+var p = new Person { Name = "Tom" };   // ✅
+```
+
+2. 构造函数参数（如果写了对应构造函数）  
+```csharp
+public Person(string name) => Name = name;
+
+var p = new Person("Tom");             // ✅
+```
+
+如果这样写就会失败：  
+```csharp
+var p = new Person();                  // ❌ 编译错误：Name 未赋值
+```
+
+总结：**new 的同时必须让编译器“看到”Name 被赋值**，否则通不过编译。
