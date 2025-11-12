@@ -46,6 +46,8 @@
       href: EF-Core/Database-First.md
     - name: Code-First和Database-First
       href: EF-Core/Code-First和Database-First.md
+    - name: N+1 问题 
+      href: EF-Core/N加1.md  
     - name: SQL 数据库项目 
       href: EF-Core/SQL 数据库项目.md  
 - name: WPF

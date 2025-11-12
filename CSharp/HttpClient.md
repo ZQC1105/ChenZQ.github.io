@@ -132,3 +132,159 @@
 | **代理 (Proxy)**       | 请求先经过的中间服务器；常用于抓包、翻墙、公司防火墙。           | `c.Proxy = new WebProxy("http://127.0.0.1:8888");`                     | Fiddler/Charles 抓包调试；企业内网需通过代理出网。                               |
 | **证书 (Certificate)** | TLS 客户端证书或自定义服务器证书验证逻辑。                       | `c.ClientCertificates.Add(new X509Certificate2("client.pfx", "pwd"));` | 银行 UKey、政府网关要求双向 TLS；测试环境用自签证书需自定义验证回调。            |
 | **Polly 策略**         | 失败自动重试、熔断、超时、回退等“弹性”组合。                     | `services.AddHttpClient("demo").AddPolicyHandler(retryPolicy);`        | 笔记本休眠恢复后网络瞬断，自动重试 3 次再弹错误框，避免用户立刻看到“请求失败”。  |
+
+在 .NET 中，`HttpClient` 的工厂模式（通常指 `IHttpClientFactory`）的核心作用是解决传统 HttpClient 使用方式带来的资源浪费、Socket 耗尽、DNS 更新不生效等问题，同时提供集中配置、日志集成、生命周期管理、策略扩展（如重试、熔断）等能力。
+
+---
+
+✅ 传统 HttpClient 的痛点
+
+```csharp
+// 常见错误用法
+var client = new HttpClient();
+```
+
+- Socket 耗尽：`HttpClient` 实现了 `IDisposable`，但频繁创建/销毁会导致端口占用不释放（TIME_WAIT）。
+- DNS 不更新：`HttpClient` 默认复用连接，DNS 变更后不会刷新（长期运行的服务）。
+- 无法集中配置：每个实例需重复设置 BaseAddress、Header、超时等。
+- 难以单元测试：直接依赖具体实现，无法 mock。
+
+---
+
+✅ 工厂模式（IHttpClientFactory）的解决方案
+
+1. 池化 Handler，避免 Socket 耗尽
+- 工厂内部复用 `HttpMessageHandler`（如 `SocketsHttpHandler`），共享连接池，避免频繁创建连接。
+- 生命周期由工厂管理，不会无限增长。
+
+2. DNS 定期刷新
+- 通过 `HandlerLifetime`（默认 2 分钟）定期轮换 Handler，强制重新解析 DNS。
+
+3. 集中配置命名客户端
+
+```csharp
+services.AddHttpClient("GitHub", client =>
+{
+    client.BaseAddress = new Uri("https://api.github.com/");
+    client.DefaultRequestHeaders.Add("User-Agent", "MyApp");
+});
+```
+
+- 通过名称区分不同配置（如 GitHub API、微信 API），避免重复代码。
+
+4. 集成 Polly 策略（重试、熔断、超时）
+
+```csharp
+services.AddHttpClient("GitHub")
+    .AddPolicyHandler(PollyPolicies.RetryAsync());
+```
+
+- 通过扩展方法链式配置策略，与业务代码解耦。
+
+5. 日志与诊断
+- 自动集成 `ILogger`，记录请求耗时、状态码、异常等（通过 `HttpClient` 的 `LoggingScope`）。
+
+6. 支持 Typed Client（强类型）
+
+```csharp
+public class GitHubService
+{
+    private readonly HttpClient _client;
+    public GitHubService(HttpClient client) => _client = client;
+}
+
+services.AddHttpClient<GitHubService>();
+```
+
+- 通过依赖注入直接注入 `HttpClient`，无需关心工厂，便于单元测试（mock `HttpClient`）。
+
+---
+
+✅ 总结：工厂模式的 5 大作用
+
+问题工厂模式解决方案
+Socket 耗尽池化 Handler，共享连接
+DNS 不更新定期轮换 Handler
+重复配置命名客户端集中配置
+策略扩展集成 Polly（重试、熔断）
+测试困难Typed Client + 依赖注入
+
+---
+
+❗注意
+- 不要在 `AddHttpClient` 中直接 `new HttpClient()`，否则会失去工厂的所有优势。
+- 不要手动管理 `HttpClient` 的生命周期（由工厂自动处理）。
+
+一句话区别：  
+| 写法 | 拿到的是什么 | 生命周期 | 给谁用 | 典型场景 |
+|---|---|---|---|---|
+| `services.AddHttpClient();` | `IHttpClientFactory` | 单例 | 你自己 `factory.CreateClient()` | 手动创建、随意命名 |
+| `services.AddHttpClient("WPF_API", …)` | 命名实例 | 单例 | 你自己 `factory.CreateClient("WPF_API")` | 一个业务一个配置 |
+| `services.AddHttpClient<LogViewModel>()` | **Typed Client** | **每次 new LogViewModel 时注入专属 HttpClient** | 直接注入到 `LogViewModel` 构造函数 | MVVM、一个类一个客户端 |
+
+---
+
+### 1. 第一种：`AddHttpClient()`
+- 只把 **IHttpClientFactory** 注册到容器  
+- 你在构造函数里注入 `IHttpClientFactory`，然后  
+  ```csharp
+  var client = _factory.CreateClient();          // 默认配置
+  var named = _factory.CreateClient("WPF_API");  // 用命名配置
+  ```
+- **手动管理** client 的名字、配置、BaseAddress  
+- 适合“我要写很多不同地址/不同超时”的场景
+
+---
+
+### 2. 第二种：`AddHttpClient("WPF_API", …)`
+- 仍然是 **IHttpClientFactory** 模式，只是提前帮你放好一个“命名配置”  
+- 使用时：
+  ```csharp
+  var client = _factory.CreateClient("WPF_API");
+  ```
+- 一个名字对应一套 `BaseAddress`、超时、Header、Handler 等  
+- 适合“同一个后端多个业务模块”时给每个模块起个名字
+
+---
+
+### 3. 第三种：`AddHttpClient<LogViewModel>()`
+- 叫做 **Typed Client**（强类型客户端）  
+- **不会给你 IHttpClientFactory**，而是直接在你 new `LogViewModel` 时，**把已经配置好的 HttpClient 注入到它的构造函数**  
+  ```csharp
+  public LogViewModel(HttpClient http)   // 这里收到的就是专属实例
+  {
+      _http = http;
+  }
+  ```
+- 生命周期跟随 `LogViewModel`（默认 Transient）  
+- 配置写法：
+  ```csharp
+  services.AddHttpClient<LogViewModel>(c =>
+  {
+      c.BaseAddress = new Uri("https://localhost:7058/");
+      c.Timeout = TimeSpan.FromSeconds(10);
+  })
+  .AddHttpMessageHandler<GlobalHttpExceptionHandler>();
+  ```
+- **最适合 MVVM**：一个 ViewModel 对应一个 HttpClient，配置、异常处理、重试策略全部封装好，**不需要管名字，也不需要手动 CreateClient**
+
+---
+
+### 一张表记住
+
+| 调用方式 | 得到的对象 | 需不需要名字 | 推荐场景 |
+|---|---|---|---|
+| `AddHttpClient()` | `IHttpClientFactory` | 需要 | 手动灵活创建 |
+| `AddHttpClient("xxx")` | 同上，只是预配了命名实例 | 需要 | 多后端/多配置 |
+| `AddHttpClient<T>()` | 直接注入 `HttpClient` 到 T 的构造函数 | 不需要 | 一个 ViewModel/Service 对应一个客户端，最干净 |
+
+---
+
+### 你该选哪个？
+- **WPF + MVVM** → 直接 `AddHttpClient<LogViewModel>()`，** typed client 最省心**  
+- 还想共享同一个配置给多个 VM → 先 `AddHttpClient("WPF_API",…)`，再在 VM 里 `factory.CreateClient("WPF_API")`  
+- 不需要 DI，只想手动创建 → 第一种
+
+---
+
+把 `AddHttpClient<LogViewModel>()` 换成你原来的命名写法也行，只是要多写一行 `CreateClient("WPF_API")`，看你喜欢哪种风格。
