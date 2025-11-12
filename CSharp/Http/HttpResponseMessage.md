@@ -62,3 +62,47 @@ HttpStatusCode back = (HttpStatusCode)numeric;
 - `StatusCode` 是 **第一手可判断依据**；  
 - `EnsureSuccessStatusCode()` 图省事，但 **不会给你细节**；  
 - 对 4xx/5xx 做 **分支处理**，才能给出友好提示。
+下面把 `HttpResponseMessage.IsSuccessStatusCode` 补进去，并给出它与 `EnsureSuccessStatusCode()` 的核心区别，方便你“一眼选型”。
+
+---
+
+### 5. 更方便的“成功”判定——`IsSuccessStatusCode`
+
+| 成员                        | 返回值 | 抛异常                      | 说明                                        |
+| --------------------------- | ------ | --------------------------- | ------------------------------------------- |
+| `IsSuccessStatusCode`       | `bool` | ❌                           | 只判断，不抛；**2xx 返回 true**，其余 false |
+| `EnsureSuccessStatusCode()` | `void` | ✅（`HttpRequestException`） | 非 2xx 直接抛，**拿不到响应体**             |
+
+```csharp
+var resp = await client.PostAsync("/api/log", content);
+
+// 写法 1：IsSuccessStatusCode —— 想自己掌控流程
+if (resp.IsSuccessStatusCode)          // 2xx
+{
+    var dto = await resp.Content.ReadFromJsonAsync<LogDto>();
+}
+else                                   // 4xx / 5xx
+{
+    var err = await resp.Content.ReadAsStringAsync();
+    _logger.LogError("服务端返回 {Status}：{Error}", resp.StatusCode, err);
+}
+
+// 写法 2：EnsureSuccessStatusCode —— 图省事，异常即失败
+try
+{
+    resp.EnsureSuccessStatusCode();    // 2xx 直接过
+    var dto = await resp.Content.ReadFromJsonAsync<LogDto>();
+}
+catch (HttpRequestException ex)        // 非 2xx
+{
+    // 这里已经读不到响应体，只能看 ex.Message
+    _logger.LogError(ex, "请求失败");
+}
+```
+
+---
+
+### 小结（更新版）
+1. 只想知道“成没成功”——用 `IsSuccessStatusCode`；  
+2. 想“失败就抛”——用 `EnsureSuccessStatusCode()`，但**丢了响应体**；  
+3. 要精细提示——`switch (resp.StatusCode)` 或 `if (IsSuccessStatusCode)` 后再分支。

@@ -18,24 +18,6 @@
       href: Testing/Microsoft.EntityFrameworkCore.InMemory.md
     - name: EF-Core测试总结
       href: Testing/EF-Core测试总结.md
-- name: 异步
-  items:
-    - name: 概念
-      href: 异步/概念.md
-    - name: ConfigureAwait
-      href: 异步/ConfigureAwait.md
-    - name: ValueTask
-      href: 异步/ValueTask.md
-- name: ASP-NET-Core
-  items:
-    - name: 模型绑定-查询和路径
-      href: ASP-NET-Core/模型绑定-查询和路径.md
-    - name: 模型验证
-      href: ASP-NET-Core/模型验证.md
-    - name: FromBody
-      href: ASP-NET-Core/FromBody.md
-    - name: FromForm
-      href: ASP-NET-Core/FromForm.md
 - name: EF-Core
   items:
     - name: 创建和配置模型

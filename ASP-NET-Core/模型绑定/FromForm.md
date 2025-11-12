@@ -1,4 +1,4 @@
-# 您提到的“框架默认从 查询字符串、路由、表单 绑定简单类型”中的 “表单”，指的是 HTTP 请求中的 表单数据（Form Data），通常在 POST 或 PUT 请求中通过 HTML 表单或 application/x-www-form-urlencoded 格式提交。
+## 您提到的“框架默认从 查询字符串、路由、表单 绑定简单类型”中的 “表单”，指的是 HTTP 请求中的 表单数据（Form Data），通常在 POST 或 PUT 请求中通过 HTML 表单或 application/x-www-form-urlencoded 格式提交。
 
 下面我将为您 详细讲解 ASP.NET Core 中“表单类型”的绑定机制，包括其格式、使用方式、与模型绑定的关系，以及实际示例。
 

@@ -1,5 +1,5 @@
 {
-  "source_base_path": "E:/Git/DocFX/zqc1105.github.io",
+  "source_base_path": "D:/快捷键/重要项目/Git/zqc1105.github.io-1",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,6 +9,129 @@
           "relative_path": "index.json"
         }
       }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/ActionResult.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/ActionResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/DTO.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/DTO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/Nginx反向代理.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/Nginx反向代理.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "ASP-NET-Core/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/toc.html"
+        },
+        ".json": {
+          "relative_path": "ASP-NET-Core/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/中间件/总结.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/中间件/总结.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/中间件/注册和使用.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/中间件/注册和使用.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/托管服务.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/托管服务.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/模型绑定/FromBody.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/模型绑定/FromBody.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/模型绑定/FromForm.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/模型绑定/FromForm.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/模型绑定/模型绑定-查询和路径.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/模型绑定/模型绑定-查询和路径.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/模型绑定/模型验证.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/模型绑定/模型验证.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ASP-NET-Core/身份认证/身份认证.md",
+      "output": {
+        ".html": {
+          "relative_path": "ASP-NET-Core/身份认证/身份认证.html"
+        }
+      },
+      "version": ""
     },
     {
       "type": "Conceptual",
@@ -22,10 +145,30 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "CSharp/HttpClient.md",
+      "source_relative_path": "CSharp/EditorConfig.md",
       "output": {
         ".html": {
-          "relative_path": "CSharp/HttpClient.html"
+          "relative_path": "CSharp/EditorConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CSharp/Http/HttpClient.md",
+      "output": {
+        ".html": {
+          "relative_path": "CSharp/Http/HttpClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CSharp/Http/HttpResponseMessage.md",
+      "output": {
+        ".html": {
+          "relative_path": "CSharp/Http/HttpResponseMessage.html"
         }
       },
       "version": ""
@@ -135,70 +278,40 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/ASP-NET-Core/DTO.md",
+      "source_relative_path": "CSharp/异步/CancellationToken.md",
       "output": {
         ".html": {
-          "relative_path": "docs/ASP-NET-Core/DTO.html"
+          "relative_path": "CSharp/异步/CancellationToken.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/ASP-NET-Core/FromBody.md",
+      "source_relative_path": "CSharp/异步/ConfigureAwait.md",
       "output": {
         ".html": {
-          "relative_path": "docs/ASP-NET-Core/FromBody.html"
+          "relative_path": "CSharp/异步/ConfigureAwait.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/ASP-NET-Core/FromForm.md",
+      "source_relative_path": "CSharp/异步/ValueTask.md",
       "output": {
         ".html": {
-          "relative_path": "docs/ASP-NET-Core/FromForm.html"
+          "relative_path": "CSharp/异步/ValueTask.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/ASP-NET-Core/Nginx反向代理.md",
+      "source_relative_path": "CSharp/异步/概念.md",
       "output": {
         ".html": {
-          "relative_path": "docs/ASP-NET-Core/Nginx反向代理.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/ASP-NET-Core/托管服务.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/ASP-NET-Core/托管服务.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/ASP-NET-Core/模型绑定-查询和路径.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/ASP-NET-Core/模型绑定-查询和路径.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/ASP-NET-Core/模型验证.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/ASP-NET-Core/模型验证.html"
+          "relative_path": "CSharp/异步/概念.html"
         }
       },
       "version": ""
@@ -548,30 +661,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/异步/ConfigureAwait.md",
+      "source_relative_path": "docs/异常/WPF.md",
       "output": {
         ".html": {
-          "relative_path": "docs/异步/ConfigureAwait.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/异步/ValueTask.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/异步/ValueTask.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/异步/概念.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/异步/概念.html"
+          "relative_path": "docs/异常/WPF.html"
         }
       },
       "version": ""
