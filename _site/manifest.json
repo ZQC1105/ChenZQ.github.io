@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/快捷键/重要项目/Git/zqc1105.github.io-1",
+  "source_base_path": "E:/Git/DocFX/zqc1105.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -228,10 +228,50 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "CSharp/关键字/record-with.md",
+      "output": {
+        ".html": {
+          "relative_path": "CSharp/关键字/record-with.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "CSharp/关键字/record.md",
       "output": {
         ".html": {
           "relative_path": "CSharp/关键字/record.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CSharp/关键字/record浅的不可变性.md",
+      "output": {
+        ".html": {
+          "relative_path": "CSharp/关键字/record浅的不可变性.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CSharp/关键字/required.md",
+      "output": {
+        ".html": {
+          "relative_path": "CSharp/关键字/required.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CSharp/关键字/with.md",
+      "output": {
+        ".html": {
+          "relative_path": "CSharp/关键字/with.html"
         }
       },
       "version": ""
@@ -372,6 +412,16 @@
       "output": {
         ".html": {
           "relative_path": "CSharp/异步/概念.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CSharp/模式匹配/1.md",
+      "output": {
+        ".html": {
+          "relative_path": "CSharp/模式匹配/1.html"
         }
       },
       "version": ""
@@ -791,6 +841,16 @@
       "output": {
         ".html": {
           "relative_path": "软件架构和设计/设计模式/建造者.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "面试/1.md",
+      "output": {
+        ".html": {
+          "relative_path": "面试/1.html"
         }
       },
       "version": ""
